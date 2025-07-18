@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presentes - Leo & Dan</title>
+    <style>
+        :root {
+            --terracota-primary: #C65D32;
+            --terracota-secondary: #E07B39;
+            --terracota-light: #F4A261;
+            --terracota-dark: #A0522D;
+            --cream: #F5F5DC;
+            --warm-white: #FFF8F0;
+            --text-dark: #3E2723;
+            --text-light: #6D4C41;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .redirect-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(198, 93, 50, 0.1);
+            border: 1px solid rgba(198, 93, 50, 0.1);
+        }
+
+        .redirect-card h1 {
+            color: var(--terracota-primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .redirect-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .gift-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--terracota-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--terracota-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: var(--terracota-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(198, 93, 50, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--terracota-primary);
+            border: 2px solid var(--terracota-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--terracota-primary);
+            color: white;
+        }
+
+        .countdown {
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: var(--terracota-primary);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .redirect-card h1 {
+                font-size: 2rem;
+            }
+            
+            .redirect-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="redirect-card">
+            <div class="gift-icon">🎁</div>
+            <h1>Lista de Presentes</h1>
+            <p><strong>Leo & Dan</strong></p>
+            
+            <div class="countdown">
+                Redirecionando em <span id="countdown">5</span> segundos...
+            </div>
+            
+            <p>
+                Você será redirecionado automaticamente para nossa lista de presentes na Ferreira Costa. 
+                Lá você encontrará todos os presentes que escolhemos com carinho para começar nossa nova vida juntos.
+            </p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="https://www.ferreiracosta.com/lista-de-casamento/presentes/leandroedanubia" class="btn" target="_blank">
+                    Ir para Lista de Presentes
+                </a>
+                <a href="index.html" class="btn btn-secondary">
+                    Voltar ao Site
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown e redirecionamento automático
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.open("https://www.ferreiracosta.com/lista-de-casamento/presentes/leandroedanubia", "_blank");
+                // window.location.href = 'index.html'; // Removido para evitar redirecionamento indesejado
+            }
+        }, 1000);
+
+        // Animação de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.redirect-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+
